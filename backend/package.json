@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "chat": "nodemon ./websocket/chat.websocket.js"
   },
   "author": "",
   "license": "ISC",
@@ -20,7 +21,8 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.9.0",
     "nodemailer": "^6.9.1",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "ws": "^7.4.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
