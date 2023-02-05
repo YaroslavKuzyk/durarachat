@@ -55,6 +55,8 @@ body {
 }
 
 .message-wrapper {
+    max-width: 550px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;

@@ -5,7 +5,6 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import router from "./router/index.js";
 import ErrorMiddleware from "./middlewares/Error.middleware.js";
-
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -19,7 +18,6 @@ app.use(
   })
 );
 app.use("/api", router);
-
 app.use(ErrorMiddleware);
 
 const start = async () => {

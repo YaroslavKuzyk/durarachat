@@ -5,7 +5,7 @@ import { Context } from "../index";
 import { observer } from "mobx-react-lite";
 
 const SignUp: FC = () => {
-  const {store} =  useContext(Context)
+  const { store } = useContext(Context);
 
   const [avatar, setAvatar] = useState<string[]>([
     "one",
@@ -18,11 +18,10 @@ const SignUp: FC = () => {
     "eigth",
     "nine",
   ]);
-  const [email, setEmail] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
-  const [activeAvatar, setActiveAratar] = useState<
-    string | React.MouseEvent<HTMLButtonElement>
-  >("one");
+  const [email, setEmail] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [activeAvatar, setActiveAratar] = useState<string>("one");
 
   const chooseAvatar = (
     el: React.MouseEvent<HTMLButtonElement>,
@@ -38,6 +37,7 @@ const SignUp: FC = () => {
         <div className="choose-avatar">
           {avatar.map((item) => (
             <button
+              key={Date.now() + item}
               onClick={(el) => chooseAvatar(el, item)}
               className={
                 item === activeAvatar
@@ -51,17 +51,36 @@ const SignUp: FC = () => {
         </div>
         <div className="sign-inputs__item">
           <span>Email:</span>
-          <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </div>
-        {/* <div className="sign-inputs__item">
+        <div className="sign-inputs__item">
           <span>Username:</span>
-          <input type="text" />
-        </div> */}
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
         <div className="sign-inputs__item">
           <span>Password:</span>
-          <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </div>
-        <button className="sign-button" onClick={() => store.registration(email, password)}>Enter</button>
+        <button
+          className="sign-button"
+          onClick={() =>
+            store.registration(email, name, password, activeAvatar)
+          }
+        >
+          Enter
+        </button>
       </div>
 
       <div className="go-sign">
